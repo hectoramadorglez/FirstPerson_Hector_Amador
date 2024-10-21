@@ -18,24 +18,36 @@ public class FirstPerson : MonoBehaviour
     {
         MoverYRotar();
     }
-    void MoverYRotar() 
+    void MoverYRotar()
     {
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
-        Vector3 movimiento = new Vector3(h, 0, v).normalized;
-        float anguloRotacion =  Mathf.Atan2(movimiento.x, movimiento.z) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
-        if (movimiento.magnitude > 0) 
-        { 
-        
-            transform.eulerAngles = new Vector3(0, anguloRotacion,0);
-        
+        Vector3 input = new Vector2(h, v).normalized;
+
+        float anguloRotacion = Mathf.Atan2(input.x, input.y) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
+
+       
+        transform.eulerAngles = new Vector3(0, anguloRotacion, 0);
+
+        if (input.magnitude > 0)
+        {
+
+
+
+
+            Vector3 movimiento = Quaternion.Euler(0, anguloRotacion, 0) * Vector3.forward;
+            controller.Move(movimiento * velociadMovimiento * Time.deltaTime);
         }
-        transform.eulerAngles = new Vector3 (0, anguloRotacion,0);
-        controller.Move(movimiento * velociadMovimiento * Time.deltaTime);
-            
-        
-        
-        
-        
     }
+
+
+
+
+
+
+
+
+
+
 }
+
