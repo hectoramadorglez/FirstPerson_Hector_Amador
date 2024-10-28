@@ -8,7 +8,12 @@ public class FirstPerson : MonoBehaviour
 
     [SerializeField] private float velociadMovimiento;
     CharacterController controller;
-    void Start()
+    [SerializeField] private float factorGravedad;
+    [SerializeField] private float movimientoVertical;
+    [SerializeField] private float radioDeteccion;
+    [SerializeField] private Transform pies;
+    [SerializeField] private LayerMask queEsSuelo;
+        void Start()
     {
         controller = GetComponent<CharacterController>();
     }
@@ -17,6 +22,8 @@ public class FirstPerson : MonoBehaviour
     void Update()
     {
         MoverYRotar();
+        AplicarGravedad();
+        EnSuelo();
     }
     void MoverYRotar()
     {
@@ -39,9 +46,21 @@ public class FirstPerson : MonoBehaviour
             controller.Move(movimiento * velociadMovimiento * Time.deltaTime);
         }
     }
+    private void AplicarGravedad() 
+    {
+       
+    
+    
+    }
 
+   // private bool EnSuelo() 
+    //{
 
-
+        //Physics.CheckSphere(pies.position, radioDeteccion, queEsSuelo);
+            
+    
+    
+    //}
 
 
 
