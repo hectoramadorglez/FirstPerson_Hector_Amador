@@ -70,6 +70,7 @@ public class Enemigo : MonoBehaviour
     { 
         agent.isStopped = false;
         anim.SetBool("atacking", false);
+        puedoDanhar = true;
     
     
     }
