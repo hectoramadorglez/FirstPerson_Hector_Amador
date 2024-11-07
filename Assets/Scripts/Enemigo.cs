@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Video;
 
 public class Enemigo : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class Enemigo : MonoBehaviour
     [SerializeField]private float radioAtaque;
     [SerializeField] private int layerMask;
     [SerializeField] private Transform attackPoint;
+    private float vidas;
     private bool puedoDanhar = true;
     //private Personaje player;
     void Start()
@@ -84,4 +86,19 @@ public class Enemigo : MonoBehaviour
   
         ventanaAbierta = false;
     }
+    public void RecibirDanho(float danhoRecibido) 
+    { 
+        
+        vidas -= danhoRecibido;
+        if (vidas <= 0) 
+        {
+            Destroy(gameObject);
+        
+        }
+        
+    }
+    
+
+
+    
 }
