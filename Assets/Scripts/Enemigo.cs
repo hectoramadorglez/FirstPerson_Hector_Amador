@@ -97,8 +97,25 @@ public class Enemigo : MonoBehaviour
         }
         
     }
-    
+    public void Morir() 
+    {
+
+       
+        
+        Destroy(gameObject, 10);// para que el cuerpo desaparezca a los 10 segundos
+    }
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.CompareTag("Parteenemigo")) 
+        { 
+            
+            
+        
+        }
 
 
-    
+
+    }
+
+
 }
